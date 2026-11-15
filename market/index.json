@@ -100,11 +100,11 @@
       "versions": [
         {
           "version": "1.1.0",
-          "publishTimestamp": 1794751807,
+          "publishTimestamp": 1794751934,
           "source": {
             "type": "git",
             "url": "https://github.com/Vhow123/dsh-llm-doubao",
-            "commit": "4b1324c4ec701c0dbbd9fed8131d069fd2910ae0"
+            "commit": "3174b2316648bc97a983b78637b594dffbe1aaa7"
           },
           "engines": {
             "dsh": ">=0.2.0"
