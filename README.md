@@ -1,5 +1,9 @@
 # dsh-llm-doubao
 
+[![GitHub](https://img.shields.io/badge/GitHub-Vhow123%2Fdsh--llm--doubao-181717?logo=github)](https://github.com/Vhow123/dsh-llm-doubao)
+[![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+[![DSH](https://img.shields.io/badge/DSH-%E2%89%A50.2.0-4f46e5)](https://github.com/deepseek-ai)
+
 把**豆包桌面客户端**里登录后可用的全部模型，反代成一个本机 OpenAI 兼容接口，并自动注入 DSH Desktop 的 `llm-pi-ai` provider，于是 DSH 的模型下拉里直接多出一组「豆包 · 客户端全模型」。
 
 不需要火山方舟 API Key，不需要充值——用的是你已经登录的豆包客户端账号额度。
@@ -10,6 +14,36 @@ DSH Desktop
         └─ http://127.0.0.1:8790/v1/chat/completions      ← 本插件
              └─ POST https://www.doubao.com/chat/completion  ← 豆包客户端同一套登录态
 ```
+
+## 安装
+
+**方式一：DSH 插件市场**（推荐）
+
+DSH → 设置 → 插件市场 → 添加索引源：
+
+```
+https://raw.githubusercontent.com/Vhow123/dsh-llm-doubao/main/market/index.json
+```
+
+然后在「发现」里搜「豆包」，点安装。
+
+**方式二：命令行**
+
+```bash
+dsh plugin install git+https://github.com/Vhow123/dsh-llm-doubao.git
+```
+
+**方式三：本地 link**（开发用）
+
+```bash
+git clone https://github.com/Vhow123/dsh-llm-doubao.git
+cd dsh-llm-doubao
+# 在 ~/.dsh/profiles/desktop/package.json 的 dependencies 里加：
+#   "@local/dsh-llm-doubao": "link:<克隆路径>"
+# 并把 "@local/dsh-llm-doubao" 加进 dsh.profile.bundles
+```
+
+装完重启一次 DSH，然后跑 `node bin/login.mjs` 取豆包登录态。
 
 ## 自己选哪些模型显示在列表里
 
@@ -72,9 +106,9 @@ curl -X POST http://127.0.0.1:8790/doubao/expose \
 
 思考强度按模型支持 5 档：`3` 低 / `4` 中 / `5` 高 / `6` 极高 / `7` 最高，转发成 OpenAI 的 `reasoning_effort`。
 
-## 装法与登录态
+## 登录态
 
-插件已在 `~/.dsh/profiles/desktop/package.json` 里注册为 `@local/dsh-llm-doubao`。登录态从豆包客户端现取：
+登录态从豆包客户端现取：
 
 ```bash
 node bin/login.mjs
