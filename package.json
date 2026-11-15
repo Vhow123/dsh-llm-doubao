@@ -1,0 +1,63 @@
+{
+  "name": "@local/dsh-llm-doubao",
+  "version": "1.1.0",
+  "type": "module",
+  "description": "把豆包桌面客户端的全部模型反代成本地 OpenAI 兼容端点，并自动注入 DSH Desktop 的模型列表；设置里可勾选显示哪些模型。",
+  "license": "MIT",
+  "author": "Vhow123",
+  "homepage": "https://github.com/Vhow123/dsh-llm-doubao#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vhow123/dsh-llm-doubao.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Vhow123/dsh-llm-doubao/issues"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "doubao",
+    "豆包",
+    "llm",
+    "openai-compatible",
+    "relay",
+    "proxy"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "exports": {
+    ".": "./index.js",
+    "./client": "./lib/client.js",
+    "./catalog": "./lib/catalog.js",
+    "./relay": "./lib/relay.js",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-settings"
+      ]
+    }
+  },
+  "scripts": {
+    "check": "node --check index.js && node --check lib/catalog.js && node --check lib/relay.js && node --check lib/client.js",
+    "models": "node bin/models.mjs",
+    "login": "node bin/login.mjs",
+    "relay": "node bin/relay.mjs",
+    "e2e": "node tools/e2e.mjs"
+  },
+  "files": [
+    "index.js",
+    "lib",
+    "bin",
+    "tools",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ]
+}

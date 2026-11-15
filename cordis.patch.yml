@@ -1,0 +1,18 @@
+- insert:
+    - id: dsh-llm-doubao
+      name: "@local/dsh-llm-doubao"
+      config:
+        host: 127.0.0.1
+        port: 8790
+        cookieFile: F:\杂项\dsh-llm-doubao\.data\doubao-cookies.json
+        cookieEnv: DOUBAO_COOKIE
+        providerId: doubao
+        displayName: 豆包 · 客户端
+        autoInject: true
+        # auto = 模型下拉里只出现一个「自动选择」入口（默认）
+        # all  = 12 个模型全列出来
+        # custom = 只列 exposeList 里点名的模型
+        exposeMode: auto
+        exposeList: []
+        logRequests: true
+        localToken: dsh-llm-doubao-local
